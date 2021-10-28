@@ -40,27 +40,7 @@ def get_sv(pin):
         print(e)
         return -999
 
-#Function:Send Telegram Message
-def send_tm(message):
-    url = "https://api.telegram.org/"+conf.telegram_bot_id+"/sendMessage"
-    data = {
-        "chat_id":conf.telegram_chat_id,
-        "text":message
-    }
-    try:
-        response=requests.request(
-            "POST",
-            url,
-            params = data
-        )
-        print("This is the telegram response=>")
-        print(response.text)
-        telegram_data = json.loads(response.text)
-        return telegram_data["ok"]
-    except Exception as e:
-        print("Errror Occurred in sending the alert message")
-        print(e)
-        return False
+
 
 #MAIN:->
 while True:
